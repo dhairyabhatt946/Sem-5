@@ -1,5 +1,9 @@
-import './import_export.dart';
 
+
+
+import '../../utils/import_export.dart';
+import '../controllers/card_controller.dart';
+import 'circular_card_view.dart';
 
 class CircularAvatarDemo extends StatefulWidget {
   const CircularAvatarDemo({super.key});

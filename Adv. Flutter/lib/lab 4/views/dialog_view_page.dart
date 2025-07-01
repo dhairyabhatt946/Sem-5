@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:project1/utils/import_export.dart';
 
 class DialogViewPage extends StatefulWidget {

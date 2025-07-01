@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:project1/utils/import_export.dart';
 
 class SnackbarViewPage extends StatefulWidget {
@@ -12,7 +14,7 @@ class _SnackbarViewPage extends State<SnackbarViewPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Snackbar View Page"),
+        title: Text("Snack bar View Page"),
       ),
       body: Center(
         child: ElevatedButton(child: Text("Click me"),
@@ -20,7 +22,7 @@ class _SnackbarViewPage extends State<SnackbarViewPage> {
             Get.showSnackbar(
               GetSnackBar(
                 title: "This is title",
-              message: "This a snackbar message",
+              message: "This a snack bar message",
               duration: Duration(seconds: 3),
             )
             );

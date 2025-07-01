@@ -1,4 +1,4 @@
-import 'card_model.dart';
+import 'package:project1/lab 2/models/card_model.dart';
 
 class ProfileController {
   CardModel createProfile({

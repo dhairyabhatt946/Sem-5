@@ -1,4 +1,21 @@
+import 'package:get/get.dart';
+import 'package:project1/lab%203/views/db_user_list_view.dart';
+import 'package:project1/lab%203/views/user_list_view.dart';
+import 'package:project1/lab%205/middleware/auth_middleware.dart';
+import 'package:project1/lab%205/views/first_view.dart';
+import 'package:project1/lab%205/views/send_data_view.dart';
+import 'package:project1/lab%206/controllers/visibility_controller.dart';
+import 'package:project1/lab%206/views/counter_view.dart';
+import 'package:project1/lab%206/views/obs_counter_view.dart';
+import 'package:project1/lab%206/views/textfield_view.dart';
+import 'package:project1/lab%206/views/timer_view.dart';
+import 'package:project1/lab%206/views/visibility_view.dart';
+
 import './utils/import_export.dart';
+import 'lab 5/views/about_view.dart';
+import 'lab 5/views/home.dart';
+import 'lab 5/views/login.dart';
+import 'lab 5/views/page1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +27,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -30,7 +47,12 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: StaticListViewPage(),
+      // home: Page1(),
+      initialRoute: '/home',
+      getPages: [
+        GetPage(name: '/home', page: () => HomeView(), middlewares: [AuthMiddleware()]),
+        GetPage(name: '/login', page: () => LoginView()),
+      ],
     );
   }
 }

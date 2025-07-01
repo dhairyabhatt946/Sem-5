@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'card_model.dart';
+
+import '../models/card_model.dart';
 
 class ProfileCardPage extends StatelessWidget {
   final CardModel profile;
