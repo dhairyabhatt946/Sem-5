@@ -1,0 +1,16 @@
+enable
+configure terminal
+
+below commands will create a vlan with number 10 and its name will be vlan10:
+	vlan 10
+	name vlan10
+	exit
+
+interface vlan config for both switches
+
+the below commands will select the interface fa0/1 and then we are changing the port mode to access from trunk and then setting the port to access for vlan10:
+	interface range fa0/1
+	switchport mode access
+	switchport access vlan 20
+	exit
+
