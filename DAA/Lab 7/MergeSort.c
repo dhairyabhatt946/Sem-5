@@ -1,7 +1,8 @@
 #include<stdio.h>
+#include<time.h>
 
 void merge(int arr[], int low, int mid, int high) {
-    int temp[high-low];
+    int temp[high-low+1];
     int k = 0;
     int i = low, j = mid + 1;
     
@@ -25,7 +26,6 @@ void merge(int arr[], int low, int mid, int high) {
     for(int m=0; m<=high-low; m++) {
         arr[n++] = temp[m];
     }
-    
 }
 
 void mergeSort(int arr[], int low, int high) {
