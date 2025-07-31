@@ -7,7 +7,6 @@ struct Edge {
     int weight;
 };
 
-// Correct comparator for qsort
 int cmp(const void *a, const void *b) {
     struct Edge *edge1 = (struct Edge *)a;
     struct Edge *edge2 = (struct Edge *)b;
@@ -34,7 +33,6 @@ int findMinCost(int V, int E, struct Edge edges[]) {
         parent[i] = i;
     }
 
-    // Use the correct size: E, which is passed
     qsort(edges, E, sizeof(struct Edge), cmp);
 
     for (int i = 0; i < E; i++) {
