@@ -1,4 +1,5 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 struct Edge {
     int source;
@@ -6,14 +7,16 @@ struct Edge {
     int weight;
 };
 
-int cmp(struct Edge *a, struct Edge *b) {
-    return a -> weight - b -> weight;
+// Correct comparator for qsort
+int cmp(const void *a, const void *b) {
+    struct Edge *edge1 = (struct Edge *)a;
+    struct Edge *edge2 = (struct Edge *)b;
+    return edge1->weight - edge2->weight;
 }
 
 int find(int parent[], int i) {
-    if(parent[i] == i) {
+    if (parent[i] == i)
         return i;
-    }
     return find(parent, parent[i]);
 }
 
@@ -23,19 +26,18 @@ void unionSet(int parent[], int u, int v) {
 
 int findMinCost(int V, int E, struct Edge edges[]) {
     int parent[V];
+    struct Edge mst[V - 1];
     int edge = 0;
-    struct Edge mst[V-1];
-    int minEdges = 0;
     int minCost = 0;
 
-    for(int i=0; i<V; i++) {
+    for (int i = 0; i < V; i++) {
         parent[i] = i;
     }
 
-    int n = sizeof(edges) / sizeof(edges[0]);
-    qsort(edges, n, sizeof(struct Edge), cmp);
+    // Use the correct size: E, which is passed
+    qsort(edges, E, sizeof(struct Edge), cmp);
 
-    for(int i=0; i<E; i++) {
+    for (int i = 0; i < E; i++) {
         int u = edges[i].source;
         int v = edges[i].destination;
         int cost = edges[i].weight;
@@ -43,21 +45,20 @@ int findMinCost(int V, int E, struct Edge edges[]) {
         int ucomp = find(parent, u);
         int vcomp = find(parent, v);
 
-        if(ucomp != vcomp) {
+        if (ucomp != vcomp) {
             printf("%d - %d = %d\n", u, v, cost);
-
             mst[edge++] = edges[i];
             minCost += cost;
-            minEdges++;
             unionSet(parent, ucomp, vcomp);
-            if(minEdges >= V) break;
+
+            if (edge == V - 1) break;
         }
     }
 
     return minCost;
 }
 
-void main() {
+int main() {
     int V = 7;
     int E = 12;
 
@@ -77,5 +78,7 @@ void main() {
     };
 
     int minCost = findMinCost(V, E, edges);
-    printf("Minimum cost = %d", minCost);
+    printf("Minimum cost = %d\n", minCost);
+
+    return 0;
 }
